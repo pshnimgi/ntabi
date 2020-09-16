@@ -2,20 +2,18 @@
   <v-app>
     <site-header></site-header>
     <v-main>
-      <HelloWorld/>
+      <router-view/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 import SiteHeader from '@/components/header'
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
     SiteHeader
   },
 
