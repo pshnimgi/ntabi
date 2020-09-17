@@ -5,7 +5,7 @@
   >
     <v-toolbar class="pa-0">
       <v-row>
-        <v-col cols="2"></v-col>
+        <v-col cols="2" md="0"></v-col>
         <v-col>
           <v-toolbar-title>
             <router-link
@@ -24,11 +24,20 @@
         </v-col>
       </v-row>
     </v-toolbar>
-    <v-navigation-drawer v-model="drawer" fixed app right width="80%">
+    <v-navigation-drawer v-model="drawer" fixed app right width="80%" xs12>
       <v-toolbar flat dense>
         <v-icon @click="drawer = !drawer">
           mdi-chevron-right
         </v-icon>
+        <v-btn text small>
+          로그인
+        </v-btn>
+        <v-btn text small>
+          회원가입
+        </v-btn>
+        <v-btn text small>
+          고객센터
+        </v-btn>
       </v-toolbar>
       <v-divider></v-divider>
       <v-list
@@ -104,9 +113,23 @@
         </v-row>
       </v-container>
       <v-img src="@/assets/banner_ndt_m_3.jpg" aspect-ratio="2" height="75"></v-img>
-      <div>
-        
-      </div>
+      <v-card-text>
+        <strong>contact</strong>
+        <div>
+          <blockquote>
+            tel : 1670-4601 | fax : 051-466-4605<br />
+            부산광역시 중구 중앙대로 119<br />
+            (상현빌딩 5층)<br />
+            1호선 중앙역 17번 출구 5분거리<br />
+            평일 : 10:00 ~ 17:00<br />
+            (11:50 ~ 13:00 점심시간)<br />
+            토/일요일 및 공휴일 휴무
+          </blockquote>
+        </div>
+        <div>
+          copyright {{ new Date().getFullYear() }}
+        </div>
+      </v-card-text>
     </v-navigation-drawer>
   </v-card>
 </template>
@@ -165,7 +188,7 @@ export default {
       nav_menu: [
         {
           title: '대만',
-          to: '/about'
+          to: '/'
         },
         {
           divider: true,
