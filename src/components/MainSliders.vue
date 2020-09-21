@@ -46,23 +46,32 @@
         :key="i"
         :src="slide.src_pc"
       >
-        <!-- <v-sheet
-          v-if="slide.title"
-          width="80%"
-          height="160"
-          class="mx-auto mt-15 px-5 tBder_1"
-          color="rgba(0,0,0,.7)"
+        <v-card
+         max-width="1200"
+         height="100%"
+         class="mx-auto d-flex align-center"
+         color="transparent"
+         tile
+         flat
         >
-          <v-row
-            class="fill-height"
-            align="center"
-            justify="center"
-            dense
+          <v-sheet
+            v-if="slide.title"
+            width="600"
+            height="170"
+            class="px-5 tBder_1"
+            color="rgba(0,0,0,.7)"
           >
-            <div class="text-h5">{{ slide.title }}</div>
-            <div class="subtitle-1">{{ slide.content }}</div>
-          </v-row>
-        </v-sheet> -->
+            <v-row
+              class="fill-height"
+              align="center"
+              justify="start"
+              dense
+            >
+              <div class="text-h4">{{ slide.title }}</div>
+              <div class="text-h5">{{ slide.content }}</div>
+            </v-row>
+          </v-sheet>
+        </v-card>
       </v-carousel-item>
     </v-carousel>
   </v-card>

@@ -4,7 +4,7 @@
   >
     <div class="text-h6 text-center font-weight-black pt-2">인기 여행</div>
     <v-row
-      class="pt-1"
+      class="pt-1 d-md-none"
     >
       <v-col
         class="pa-0"
@@ -81,6 +81,91 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-card
+      class="d-none d-md-flex d-sm-none mx-auto mt-3"
+      max-width="1200"
+      flat
+      tile
+    >
+      <v-row
+        class="pt-1"
+      >
+        <v-col
+          class="pa-0"
+          cols="8"
+        >
+          <v-carousel
+              cycle
+              height="300"
+              interval="4500"
+              hide-delimiter-background
+              show-arrows-on-hover
+              class="bestSlider"
+          >
+            <v-carousel-item
+              v-for="(slide, i) in BestProductsSlides"
+              :key="i"
+              :src="slide.src"
+            >
+              <v-card
+                v-if="slide.title"
+                class="d-flex align-content-end flex-wrap"
+                flat
+                tile
+                height="100%"
+                color="rgba(0,0,0,.0)"
+              >
+                <v-card
+                  flat
+                  tile
+                  dense
+                  color="rgba(0,0,0,.0)"
+                  class="pa-3"
+                >
+                  <div class="text-h5">{{ slide.content }}</div>
+                  <div class="text-h4">{{ slide.title }}</div>
+                </v-card>
+              </v-card>
+            </v-carousel-item>
+          </v-carousel>
+        </v-col>
+        <v-col
+          v-for="BestProduct in BestProducts"
+          :key="BestProduct.title"
+          class="d-flex child-flex pa-1"
+          cols="4"
+        >
+          <v-card flat tile class="d-flex rounded-xl">
+            <v-img
+              :src="BestProduct.src"
+              aspect-ratio="1"
+              class="white--text align-end"
+              gradient="to left, rgba(255,255,255,0), rgba(255,255,255,.1)"
+              max-height="300"
+            >
+              <v-card
+                class="d-flex align-content-end flex-wrap"
+                flat
+                tile
+                height="100%"
+                color="rgba(0,0,0,.5)"
+              >
+                <v-card
+                  flat
+                  tile
+                  dense
+                  color="rgba(0,0,0,.0)"
+                  class="pa-3 white--text"
+                >
+                <div class="text-h5">{{ BestProduct.title }}</div>
+                <div class="subtitle-1">{{ BestProduct.price }}</div>
+                </v-card>
+              </v-card>
+            </v-img>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-card>
   </v-container>
 </template>
 

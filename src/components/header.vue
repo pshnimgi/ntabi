@@ -3,19 +3,18 @@
     flat
     tile
   >
-    <v-toolbar
-      class="pa-0"
+    <v-app-bar
+      class="d-none d-md-flex d-sm-none pa-0 justify-center"
       height="extended"
+      color="white"
       dense
+      fixed
     >
       <v-row>
         <v-col
           cols="2"
-          offset-md="1"
         >
-          <v-toolbar-title
-            class="d-none d-md-flex d-sm-none"
-          >
+          <v-toolbar-title>
             <router-link
               tag="div"
               :to="{ path: '/' }"
@@ -33,28 +32,8 @@
             </router-link>
           </v-toolbar-title>
         </v-col>
-        <v-col class="d-md-none">
-          <v-toolbar-title>
-            <router-link
-              tag="div"
-              :to="{ path: '/' }"
-            >
-              <v-img
-                src="@/assets/logo.png"
-                alt="logo"
-                class="mx-auto mt-1"
-                :max-height="28"
-                :max-width="80"
-              />
-              <p class="text-caption text-center font-weight-black pa-0 ma-0">
-                여행갈땐 엔타비
-              </p>
-            </router-link>
-          </v-toolbar-title>
-        </v-col>
         <v-col
-          cols="2"
-          md="9"
+          cols="10"
           class="pa-0"
         >
           <v-app-bar-nav-icon
@@ -159,179 +138,44 @@
                     </div>
                   </v-btn>
                 </v-btn-toggle>
-                <!-- <v-btn-toggle
-                  v-model="text"
-                  tile
-                  group
-                >
-                  <v-btn>
-                    <div class="font-weight-bold text-h6">
-                      대만
-                    </div>
-                  </v-btn>
-                  <v-btn>
-                    <div class="font-weight-black text-h6">
-                      마카오
-                    </div>
-                  </v-btn>
-                  <v-menu
-                    open-on-hover
-                    bottom
-                    offset-y
-                  >
-                    <template
-                      v-slot:activator="{ on, attrs }"
-                    >
-                      <v-btn
-                        v-bind="attrs"
-                        v-on="on"
-                        value="동남아"
-                      >
-                        <div class="font-weight-black text-h6">
-                          동남아
-                        </div>
-                      </v-btn>
-                    </template>
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-title>태국</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>필리핀</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>베트남</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>라오스</v-list-item-title>
-                      </v-list-item>
-                    </v-list>
-                  </v-menu>
-                  <v-menu
-                    open-on-hover
-                    bottom
-                    offset-y
-                  >
-                    <template
-                      v-slot:activator="{ on, attrs }"
-                    >
-                      <v-btn
-                        v-bind="attrs"
-                        v-on="on"
-                        value="러시아"
-                      >
-                        <div class="font-weight-black text-h6">
-                          러시아
-                        </div>
-                      </v-btn>
-                    </template>
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-title>블라디보스톡</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>캄차카</v-list-item-title>
-                      </v-list-item>
-                    </v-list>
-                  </v-menu>
-                  <v-btn>
-                    <div class="font-weight-black text-h6">
-                      몽골
-                    </div>
-                  </v-btn>
-                  <v-menu
-                    open-on-hover
-                    bottom
-                    offset-y
-                  >
-                    <template
-                      v-slot:activator="{ on, attrs }"
-                    >
-                      <v-btn
-                        v-bind="attrs"
-                        v-on="on"
-                        value="중국"
-                      >
-                        <div class="font-weight-black text-h6">
-                          중국
-                        </div>
-                      </v-btn>
-                    </template>
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-title>상해</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>북경</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>청도</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>하이난/샤먼</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>백두산</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>장가계</v-list-item-title>
-                      </v-list-item>
-                    </v-list>
-                  </v-menu>
-                  <v-menu
-                    open-on-hover
-                    bottom
-                    offset-y
-                  >
-                    <template
-                      v-slot:activator="{ on, attrs }"
-                    >
-                      <v-btn
-                        v-bind="attrs"
-                        v-on="on"
-                        value="일본"
-                      >
-                        <div class="font-weight-black text-h6">
-                          일본
-                        </div>
-                      </v-btn>
-                    </template>
-                    <v-list>
-                      <v-list-item>
-                        <v-list-item-title>북해도</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>오사카</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>나고야</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>오키나와</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>후쿠오카</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>동경</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>대마도</v-list-item-title>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-item-title>선박여행</v-list-item-title>
-                      </v-list-item>
-                    </v-list>
-                  </v-menu>
-                  <v-btn>
-                    <div class="font-weight-black text-h6">
-                      국내여행
-                    </div>
-                  </v-btn>
-                </v-btn-toggle> -->
               </v-col>
             </v-row>
           </v-card>
+        </v-col>
+      </v-row>
+    </v-app-bar>
+    <v-toolbar
+      class="d-md-none pa-0"
+      dense
+    >
+      <v-row>
+        <v-col cols="2" />
+        <v-col>
+          <v-toolbar-title>
+            <router-link
+              tag="div"
+              :to="{ path: '/' }"
+            >
+              <v-img
+                src="@/assets/logo.png"
+                alt="logo"
+                class="mx-auto mt-1"
+                :max-height="28"
+                :max-width="80"
+              />
+              <p class="text-caption text-center font-weight-black pa-0 ma-0">
+                여행갈땐 엔타비
+              </p>
+            </router-link>
+          </v-toolbar-title>
+        </v-col>
+        <v-col
+          cols="2"
+          md="9"
+        >
+          <v-app-bar-nav-icon
+            @click="drawer = !drawer"
+          />
         </v-col>
       </v-row>
     </v-toolbar>
@@ -654,10 +498,6 @@ export default {
           inset: false
         }
       ]
-    }
-  },
-  methods: {
-    test () {
     }
   }
 }
