@@ -3,28 +3,347 @@
     flat
     tile
   >
-    <v-toolbar class="pa-0">
+    <v-toolbar
+      class="pa-0"
+      height="extended"
+      dense
+    >
       <v-row>
-        <v-col cols="2" md="0"></v-col>
-        <v-col>
+        <v-col
+          cols="2"
+          offset-md="1"
+        >
+          <v-toolbar-title
+            class="d-none d-md-flex d-sm-none"
+          >
+            <router-link
+              tag="div"
+              :to="{ path: '/' }"
+            >
+              <v-img
+                src="@/assets/logo.png"
+                alt="logo"
+                class="mx-auto mt-1"
+                :max-height="50"
+                :max-width="136"
+              />
+              <p class="text-subtitle-1 text-center font-weight-black pa-0 ma-0">
+                여행갈땐 엔타비
+              </p>
+            </router-link>
+          </v-toolbar-title>
+        </v-col>
+        <v-col class="d-md-none">
           <v-toolbar-title>
             <router-link
               tag="div"
               :to="{ path: '/' }"
             >
-              <v-img src="@/assets/logo.png" alt="logo" class="mx-auto mt-1" :max-height="28" :max-width="80"/>
+              <v-img
+                src="@/assets/logo.png"
+                alt="logo"
+                class="mx-auto mt-1"
+                :max-height="28"
+                :max-width="80"
+              />
               <p class="text-caption text-center font-weight-black pa-0 ma-0">
                 여행갈땐 엔타비
               </p>
             </router-link>
           </v-toolbar-title>
         </v-col>
-        <v-col cols="2">
-          <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-col
+          cols="2"
+          md="9"
+          class="pa-0"
+        >
+          <v-app-bar-nav-icon
+            @click="drawer = !drawer"
+            class="d-md-none"
+          />
+          <v-card
+            class="d-none d-md-flex d-sm-none"
+            flat
+            tile
+          >
+            <v-row
+              flat
+              tile
+            >
+              <v-col
+                class="d-flex justify-end pa-0"
+                cols="12"
+                tile
+              >
+                <v-btn-toggle
+                  v-model="text"
+                  tile
+                  group
+                  dense
+                >
+                  <v-btn>
+                    <v-img
+                      src="@/assets/ndtLogo.png"
+                    />
+                  </v-btn>
+                  <v-divider vertical inset/>
+                  <v-btn>
+                    <div class="text-caption">
+                      로그인
+                    </div>
+                  </v-btn>
+                  <v-divider vertical inset/>
+                  <v-btn>
+                    <div class="text-caption">
+                      회원가입
+                    </div>
+                  </v-btn>
+                  <v-divider vertical inset/>
+                  <v-btn>
+                    <div class="text-caption">
+                      고객센터
+                    </div>
+                  </v-btn>
+                </v-btn-toggle>
+              </v-col>
+              <v-col
+                class="d-flex justify-end pa-0"
+                cols="12"
+              >
+                <v-btn-toggle
+                  v-for="(item, index) in nav_menu"
+                  :key="index"
+                  v-model="text"
+                  tile
+                  group
+                >
+                  <v-divider
+                    v-if="item.divider"
+                    :key="index"
+                    :inset="item.inset"
+                  />
+                  <v-menu
+                    v-else-if="item.items"
+                    open-on-hover
+                    bottom
+                    offset-y
+                  >
+                    <template
+                      v-slot:activator="{ on, attrs }"
+                    >
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        :value="item.title"
+                      >
+                        <div class="font-weight-black text-h6">
+                          {{ item.title }}
+                        </div>
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item
+                        v-for="(subItem, i) in item.items"
+                        :key="i"
+                        :href="item.to"
+                      >
+                        <v-list-item-title>{{ subItem.title }}</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+                  <v-btn
+                    v-else
+                  >
+                    <div class="font-weight-bold text-h6">
+                          {{ item.title }}
+                    </div>
+                  </v-btn>
+                </v-btn-toggle>
+                <!-- <v-btn-toggle
+                  v-model="text"
+                  tile
+                  group
+                >
+                  <v-btn>
+                    <div class="font-weight-bold text-h6">
+                      대만
+                    </div>
+                  </v-btn>
+                  <v-btn>
+                    <div class="font-weight-black text-h6">
+                      마카오
+                    </div>
+                  </v-btn>
+                  <v-menu
+                    open-on-hover
+                    bottom
+                    offset-y
+                  >
+                    <template
+                      v-slot:activator="{ on, attrs }"
+                    >
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        value="동남아"
+                      >
+                        <div class="font-weight-black text-h6">
+                          동남아
+                        </div>
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item>
+                        <v-list-item-title>태국</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>필리핀</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>베트남</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>라오스</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+                  <v-menu
+                    open-on-hover
+                    bottom
+                    offset-y
+                  >
+                    <template
+                      v-slot:activator="{ on, attrs }"
+                    >
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        value="러시아"
+                      >
+                        <div class="font-weight-black text-h6">
+                          러시아
+                        </div>
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item>
+                        <v-list-item-title>블라디보스톡</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>캄차카</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+                  <v-btn>
+                    <div class="font-weight-black text-h6">
+                      몽골
+                    </div>
+                  </v-btn>
+                  <v-menu
+                    open-on-hover
+                    bottom
+                    offset-y
+                  >
+                    <template
+                      v-slot:activator="{ on, attrs }"
+                    >
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        value="중국"
+                      >
+                        <div class="font-weight-black text-h6">
+                          중국
+                        </div>
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item>
+                        <v-list-item-title>상해</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>북경</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>청도</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>하이난/샤먼</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>백두산</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>장가계</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+                  <v-menu
+                    open-on-hover
+                    bottom
+                    offset-y
+                  >
+                    <template
+                      v-slot:activator="{ on, attrs }"
+                    >
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        value="일본"
+                      >
+                        <div class="font-weight-black text-h6">
+                          일본
+                        </div>
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item>
+                        <v-list-item-title>북해도</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>오사카</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>나고야</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>오키나와</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>후쿠오카</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>동경</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>대마도</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-title>선박여행</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+                  <v-btn>
+                    <div class="font-weight-black text-h6">
+                      국내여행
+                    </div>
+                  </v-btn>
+                </v-btn-toggle> -->
+              </v-col>
+            </v-row>
+          </v-card>
         </v-col>
       </v-row>
     </v-toolbar>
-    <v-navigation-drawer v-model="drawer" fixed app right width="80%" xs12>
+    <v-navigation-drawer
+      v-model="drawer"
+      class="d-md-none"
+      fixed
+      app
+      right
+      width="80%"
+      xs12
+    >
       <v-toolbar flat dense>
         <v-icon @click="drawer = !drawer">
           mdi-chevron-right
