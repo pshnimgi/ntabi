@@ -4,6 +4,7 @@
     <v-main>
       <router-view/>
     </v-main>
+    <v-divider class="py-2" />
     <site-footer></site-footer>
   </v-app>
 </template>
