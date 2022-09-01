@@ -127,8 +127,9 @@
           <v-col cols="4">
             <div>
               <blockquote class="text-body-2">
-                tel : 1670-4601 | fax : 051-466-4605<br />
-                부산광역시 중구 중앙대로 119 (상현빌딩 5층)<br />
+                tel : 051-466-4602 / fax : 051-466-4605<br />
+                email: kwonsix@ntabi.co.kr
+                부산광역시 중구 중앙대로 169 504호(태영 노블리안)<br />
                 평 일 : 10:00 ~ 17:00 (12:00 ~ 13:00 점심시간)<br />
                 토/일요일 및 공휴일 휴무<br />
               </blockquote>
